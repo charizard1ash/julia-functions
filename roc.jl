@@ -1,7 +1,7 @@
+using DataFrames
+df = DataFrames
+
 function roc(prob_values, labels; prob_thresh = collect(0:0.05:1))
-    using DataFrames
-    df = DataFrames
-    
     df_roc = df.DataFrame(prob_threshold = Float64[], tnr = Float64[], fpr = Float64[], fnr = Float64[], tpr = Float64[], precision = Float64[], recall = Float64[], f1_score = Float64[])
     for p in prob_thresh
         x_pred = ifelse.(prob_values>=p, 1, 0)
